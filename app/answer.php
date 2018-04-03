@@ -26,7 +26,7 @@ class Answer {
 		$message_id = $hash[1];
 		$data = [
 			'chat_id' => $user_id,
-			'text' => '真夜：' . Di::get('message_text'),
+			'text' => '真夜：' . trim(Di::get('message_text')),
 			'reply_to_message_id' => $message_id
 		];
 		return Di::get('telegram')->sendMessage($data);
@@ -36,7 +36,7 @@ class Answer {
 		$ask_message = trim(Di::get('update')['message']['reply_to_message']['text']);
 		$data = [
 			'chat_id' => CHANNAL_ID,
-			'text' => substr(explode('  ', $ask_message)[0], 0, 4)
+			'text' => strtolower(substr(explode('  ', $ask_message)[0], 0, 4)) . "\n" . $ask_message . "\n" . trim(Di::get('message_text'))
 		];
 		return Di::get('telegram')->sendMessage($data);
 	}
