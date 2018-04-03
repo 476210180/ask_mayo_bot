@@ -35,7 +35,7 @@ class Answer {
 	private function forward() {
 		$ask_message = Di::get('update')['message']['reply_to_message']['text'];
 		preg_match_all('#^[a-zA-Z0-9\+/]+\\n(.+)#', $ask_message, $matchs);
-		$message = $matchs[1];
+		$message = $matchs[2];
 		$data = [
 			'chat_id' => CHANNAL_ID,
 			'text' => strtolower(substr(base64_encode(date('H:i')), 0, 4)) . "\n" . $message . "\n\n" . trim(Di::get('message_text'))
