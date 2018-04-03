@@ -1,9 +1,9 @@
 <?php
 
 // Dependencies
-//require '../vendor/autoload.php';
+require __DIR__ . '../vendor/autoload.php';
 // Settings
-//require '../settings.php';
+//require __DIR__ . '/../settings.php';
 // App
 //$app = new \Bot\Core;
 
