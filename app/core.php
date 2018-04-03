@@ -2,15 +2,15 @@
 
 namespace Bot;
 
-use Di;
+use \Bot\Di;
 
 class Core {
 
 	private $update;
 
 	public function __construct() {
-		$telegram = new Telegram(BOT_API_TOKEN);
-		$update = $this->telegram->getData();
+		$telegram = new \Telegram(BOT_API_TOKEN);
+		$update = $telegram->getData();
 		$this->update = $update;
 		Di::set('telegram', $telegram);
 		Di::set('update', $update);
@@ -20,7 +20,7 @@ class Core {
 	}
 
 	private function isPrivate() {
-		return $this->update['message']['chat']['type'] == 'private' ? true : flase;
+		return $this->update['message']['chat']['type'] == 'private' ? true : false;
 	}
 
 	private function isCommand() {
@@ -28,7 +28,7 @@ class Core {
 	}
 
 	private function isVaildMessage() {
-		if (preg_match('/\S+/', Di::get('message_text')) && !empty(Di::get('message_id')) {
+		if (preg_match('/\S+/', Di::get('message_text')) && !empty(Di::get('message_id'))) {
 			return true;
 		}
 		return false;
@@ -39,7 +39,7 @@ class Core {
 	}
 
 	private function isAnswer() {
-		if ($this->isMaster()) && !empty($this->update['message']['reply_to_message']['message_id']) {
+		if ($this->isMaster() && !empty($this->update['message']['reply_to_message']['message_id'])) {
 			return true;
 		}
 		return false;
@@ -47,7 +47,7 @@ class Core {
 
 	public function run() {
 		// Force Private Chat
-		if (!$this->isPrivate()) || (!$this->isVaildMessage()) {
+		if (!$this->isPrivate() || !$this->isVaildMessage()) {
 			exit;
 		} 
 		// Ask & Answer

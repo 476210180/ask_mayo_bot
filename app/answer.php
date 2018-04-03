@@ -2,7 +2,7 @@
 
 namespace Bot;
 
-use Di;
+use \Bot\Di;
 
 class Answer {
 
