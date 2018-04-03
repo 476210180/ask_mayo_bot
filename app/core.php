@@ -53,12 +53,12 @@ class Core {
 		} 
 		// Ask & Answer
 		if ($this->isCommand()) {
-			return \Bot\Command();
+			return new \Bot\Command;
 		}
 		if ($this->isAnswer()) {
-			return \Bot\Answer();
+			return new \Bot\Answer;
 		}
-		return \Bot\Ask();
+		return new \Bot\Ask();
 	}
 
 }
