@@ -11,8 +11,8 @@ class Commands {
 	}
 
 	private function init() {
-		preg_match_all('#(/[a-zA-Z0-9_]+)#', Di::get('message_text'), $matchs);
-		$command = $matchs[1];
+		//preg_match_all('#(/[a-zA-Z0-9_]+)([\s\S]+)#', Di::get('message_text'), $matchs);
+		$command = Di::get('message_text');
 		if (($command == '/start') || ($command == '/help')) {
 			return $this->help();
 		}
