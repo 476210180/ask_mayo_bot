@@ -3,7 +3,7 @@
 // Dependencies
 require __DIR__ . '../vendor/autoload.php';
 // Settings
-//require __DIR__ . '/../settings.php';
+require __DIR__ . '/../settings.php';
 // App
 //$app = new \Bot\Core;
 
