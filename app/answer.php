@@ -26,7 +26,7 @@ class Answer {
 		$message_id = $hash[1];
 		$data = [
 			'chat_id' => $user_id,
-			'text' => '真夜：' . trim(Di::get('message_text')),
+			'text' => MASTER_NAME .'：' . trim(Di::get('message_text')),
 			'reply_to_message_id' => $message_id
 		];
 		return Di::get('telegram')->sendMessage($data);
