@@ -33,10 +33,12 @@ class Answer {
 	}
 
 	private function forward() {
-		$ask_message = trim(Di::get('update')['message']['reply_to_message']['text']);
+		$ask_message = Di::get('update')['message']['reply_to_message']['text'];
+		preg_match_all('#^[a-zA-Z0-9\+/]+\\n(.+)#', $ask_message, $matchs);
+		$message = $matchs[1];
 		$data = [
 			'chat_id' => CHANNAL_ID,
-			'text' => strtolower(substr(explode('  ', $ask_message)[0], 0, 4)) . "\n" . $ask_message . "\n" . trim(Di::get('message_text'))
+			'text' => strtolower(substr(base64_encode(date('H:i')), 0, 4)) . "\n" . $message . "\n\n" . trim(Di::get('message_text'))
 		];
 		return Di::get('telegram')->sendMessage($data);
 	}
