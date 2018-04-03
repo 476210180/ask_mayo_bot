@@ -17,8 +17,8 @@ class Commands {
 		if ($command == '/help') {
 			return $this->help();
 		}
-		if ($command == '/chat_id') {
-			return $this->chat_id();
+		if ($command == '/user_id') {
+			return $this->user_id();
 		}
 	}
 
