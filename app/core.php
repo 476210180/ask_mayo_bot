@@ -15,6 +15,7 @@ class Core {
 		Di::set('telegram', $telegram);
 		Di::set('update', $update);
 		Di::set('chat_id', $update['message']['chat']['id']);
+		Di::set('user_id', $update['message']['from']['id']);
 		Di::set('message_id', $update['message']['message_id']);
 		Di::set('message_text', $update['message']['text']);
 	}
@@ -35,7 +36,7 @@ class Core {
 	}
 
 	private function isMaster() {
-		return $this->update['message']['chat']['id'] == MASTER_CHAT_ID ? true : false;
+		return Di::get('user_id') == MASTER_USER_ID ? true : false;
 	}
 
 	private function isAnswer() {

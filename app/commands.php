@@ -30,10 +30,10 @@ class Commands {
 		return Di::get('telegram')->sendMessage($data);
 	}
 
-	private function chat_id() {
+	private function user_id() {
 		$data = [
 			'chat_id' => Di::get('chat_id'),
-			'text' => Di::get('chat_id')
+			'text' => Di::get('user_id')
 		];
 		return Di::get('telegram')->sendMessage($data);
 	}

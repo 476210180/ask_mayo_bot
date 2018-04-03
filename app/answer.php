@@ -21,9 +21,13 @@ class Answer {
 
 	private function reply() {
 		$ask_message = Di::get('update')['message']['reply_to_message']['text'];
+		$hash = explode('+', base64_decode(explode("\n", $ask_message)[0]));
+		$user_id = $hash[0];
+		$message_id = $hash[1];
 		$data = [
-			'chat_id' => base64_decode(explode("\n", $ask_message)[0]),
-			'text' => Di::get('message_text')
+			'chat_id' => $user_id,
+			'text' => '真夜：' . Di::get('message_text'),
+			'reply_to_message_id' => $message_id
 		];
 		return Di::get('telegram')->sendMessage($data);
 	}

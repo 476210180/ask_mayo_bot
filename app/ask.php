@@ -12,10 +12,10 @@ class Ask {
 
 	private function ask() {
 		$message = trim(Di::get('message_text'));
-		$chat_id = base64_encode(Di::get('update')['message']['from']['id']);
+		$hash = base64_encode(Di::get('user_id') . '+' . Di::get('message_id'));
 		$data = [
-			'chat_id' => MASTER_CHAT_ID,
-			'text' => "{$chat_id}\n" . $message
+			'chat_id' => MASTER_USER_ID,
+			'text' => "{$hash}\n" . $message
 		];
 		return Di::get('telegram')->sendMessage($data);
 	}
