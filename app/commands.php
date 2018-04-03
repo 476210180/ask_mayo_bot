@@ -13,7 +13,8 @@ class Commands {
 	private function init() {
 		//preg_match_all('#(/[a-zA-Z0-9_]+)([\s\S]+)#', Di::get('message_text'), $matchs);
 		$command = Di::get('message_text');
-		if (($command == '/start') || ($command == '/help')) {
+		//if (($command == '/start') || ($command == '/help')) {
+		if ($command == '/help') {
 			return $this->help();
 		}
 		if ($command == '/chat_id') {
