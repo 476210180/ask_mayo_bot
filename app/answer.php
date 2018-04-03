@@ -44,7 +44,7 @@ class Answer {
 		}
 		$data = [
 			'chat_id' => CHANNAL_ID,
-			'text' => strtolower(substr(base64_encode(date('c')), 0, 4)) . $text . "\n\n" . trim(Di::get('message_text'))
+			'text' => strtolower(substr(base64_encode(date('s:i:H')), 0, 4)) . $text . "\n\n" . trim(Di::get('message_text'))
 		];
 		return Di::get('telegram')->sendMessage($data);
 	}
