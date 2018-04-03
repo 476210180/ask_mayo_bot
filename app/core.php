@@ -48,6 +48,7 @@ class Core {
 	public function run() {
 		// Force Private Chat
 		if (!$this->isPrivate() || !$this->isVaildMessage()) {
+			echo 'Not Telegram Private Chat';
 			exit;
 		} 
 		// Ask & Answer
