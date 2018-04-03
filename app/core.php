@@ -39,7 +39,7 @@ class Core {
 	}
 
 	private function isAnswer() {
-		if ($this->isMaster() && !empty($this->update['message']['reply_to_message']['message_id'])) {
+		if ($this->isMaster() && !is_null($this->update['message']['reply_to_message']['text'])) {
 			return true;
 		}
 		return false;
