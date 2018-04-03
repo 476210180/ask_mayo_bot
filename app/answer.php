@@ -20,9 +20,9 @@ class Answer {
 	}
 
 	private function reply() {
-		$ask_message = trim(Di::get('update')['message']['reply_to_message']['text']);
+		$ask_message = Di::get('update')['message']['reply_to_message']['text'];
 		$data = [
-			'chat_id' => base64_decode(explode('  ', $ask_message)[0]),
+			'chat_id' => base64_decode(explode("\n", $ask_message)[0]),
 			'text' => Di::get('message_text')
 		];
 		return Di::get('telegram')->sendMessage($data);
