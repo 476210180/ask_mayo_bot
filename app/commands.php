@@ -17,6 +17,9 @@ class Commands {
 		if ($command == '/help') {
 			return $this->help();
 		}
+		if ($command == '/start') {
+			return $this->help();
+		}
 		if ($command == '/user_id') {
 			return $this->user_id();
 		}
